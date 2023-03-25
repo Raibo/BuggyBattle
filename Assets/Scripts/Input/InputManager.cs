@@ -8,7 +8,7 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Input
 {
     public class InputManager : MonoBehaviour
     {
-        public float MouseSensitivity;
+        public Transform PlayerCamera;
 
         [EventGlobal(InputEvent.Aim)] public GameEvent<Vector2> Aim;
         [EventGlobal(InputEvent.Movement)] public GameEvent<Vector2> Movement;
@@ -32,10 +32,10 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Input
         }
 
 
-        public void OnAim(CallbackContext cc)
+        private void Update()
         {
-            var vector = cc.ReadValue<Vector2>();
-            Aim.Raise(vector * MouseSensitivity);
+            var aimingVector = PlayerCamera.TransformDirection(Vector3.forward);
+            Aim.Raise(aimingVector);
         }
 
 
@@ -94,12 +94,6 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Input
                 return;
 
             Menu.Raise();
-        }
-
-
-        private void Reset()
-        {
-            MouseSensitivity = 1f;
         }
     }
 }

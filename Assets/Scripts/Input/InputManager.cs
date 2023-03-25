@@ -25,6 +25,13 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Input
         [EventGlobal(InputEvent.Menu)] public GameEvent Menu;
 
 
+        private void Start()
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+
         public void OnAim(CallbackContext cc)
         {
             var vector = cc.ReadValue<Vector2>();

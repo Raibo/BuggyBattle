@@ -16,11 +16,11 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
 
         private void Update()
         {
-            var cameraDirection = PlayerCamera.TransformDirection(Vector3.forward);
+            var cameraDirection = PlayerCamera.transform.forward;
 
-            var aimPoint = Physics.Raycast(PlayerCamera.transform.position, cameraDirection, out var raycastHit, MaxRaycastDistance)
+            var aimPoint = Physics.Raycast(PlayerCamera.position, cameraDirection, out var raycastHit, MaxRaycastDistance)
                 ? raycastHit.point
-                : cameraDirection * MaxRaycastDistance;
+                : cameraDirection * MaxRaycastDistance + PlayerCamera.position;
 
             NewAimPoint.Raise(aimPoint);
         }

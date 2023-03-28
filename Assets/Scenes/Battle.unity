@@ -321,10 +321,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TurretSpeed: 60
-  TurretReference: {fileID: 0}
-  Turret: {fileID: 0}
-  WeaponMount: {fileID: 0}
-  WeaponMountReference: {fileID: 0}
+  TurretReference: {fileID: 419237170}
+  Turret: {fileID: 2020001791}
+  WeaponMountReference: {fileID: 2066877610}
+  WeaponMount: {fileID: 130033610}
 --- !u!1 &35849418
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
         }
 
 
-        [ResponseLocal(UnitMovementEvents.NewAimPoint)]
+        [ResponseLocal(UnitControlEvents.NewAimPoint)]
         public void OnNewAimPoint(Vector3 aimPoint)
         {
             Rotate(Turret, TurretReference, aimPoint, Vector3.up);

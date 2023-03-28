@@ -32,7 +32,7 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
         }
 
 
-        [ResponseLocal(UnitMovementEvents.NewMovementVector)]
+        [ResponseLocal(UnitControlEvents.NewMovementVector)]
         public void OnNewMovementVector(Vector2 vector) =>
             _motionVector = vector;
 

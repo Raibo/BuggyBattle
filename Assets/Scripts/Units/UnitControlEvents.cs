@@ -1,8 +1,10 @@
 ﻿namespace Hudossay.BuggyBattle.Assets.Scripts.Units
 {
-    public enum UnitMovementEvents
+    public enum UnitControlEvents
     {
         NewMovementVector,
         NewAimPoint,
+        OpenFire,
+        StopFire,
     }
 }

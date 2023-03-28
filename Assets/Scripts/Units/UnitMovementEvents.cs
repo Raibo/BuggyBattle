@@ -3,6 +3,6 @@
     public enum UnitMovementEvents
     {
         NewMovementVector,
-        NewAimingVector,
+        NewAimPoint,
     }
 }

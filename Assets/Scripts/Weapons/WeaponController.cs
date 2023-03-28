@@ -62,8 +62,13 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
         {
             _sinceReload = 0f;
             var projectile = _projectilePool.Rent().GameObject;
-            projectile.SetActive(true);
             projectile.transform.SetPositionAndRotation(FirePoint.position, FirePoint.rotation);
+
+            var rigidBody = projectile.GetComponent<Rigidbody>();
+            rigidBody.velocity = Vector3.zero;
+            rigidBody.angularVelocity = Vector3.zero;
+
+            projectile.SetActive(true);
         }
     }
 }

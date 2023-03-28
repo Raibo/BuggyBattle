@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 29468567}
   - component: {fileID: 29468572}
   - component: {fileID: 29468573}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,6 +462,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 886396550}
+  - {fileID: 1931361186}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -608,6 +609,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CannonMount
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 81ad82b075cb7ad4a8f92dc1eef9cd33, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81ad82b075cb7ad4a8f92dc1eef9cd33, type: 3}
 --- !u!4 &130033610 stripped
@@ -627,7 +632,7 @@ GameObject:
   - component: {fileID: 176637881}
   - component: {fileID: 176637880}
   - component: {fileID: 176637879}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +727,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 375770437}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,7 +759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 419237170}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TurretReference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1278,7 +1283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 942203979}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CannonFiringPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1537,7 +1542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1685677917}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ViewPoint
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
@@ -1715,8 +1720,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: CannonBarrel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4763b3e3927a589429c283673a97f79b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4763b3e3927a589429c283673a97f79b, type: 3}
+--- !u!1 &1931361185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1931361186}
+  - component: {fileID: 1931361187}
+  m_Layer: 0
+  m_Name: CannonExplosions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1931361186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931361185}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 83400033}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1931361187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931361185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c05ea0d4ff37794f913801f9b19947d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 7341600796548323317, guid: 59a4fc112401be44d8083e2e2764b7f8, type: 3}
+  MinimumCapacity: 5
 --- !u!1001 &2020001790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1772,6 +1827,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a497741e4645026458c11187f61eb38c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a497741e4645026458c11187f61eb38c, type: 3}
 --- !u!4 &2020001791 stripped
@@ -1788,7 +1847,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2066877610}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CannonMountReference
   m_TagString: Untagged
   m_Icon: {fileID: 0}

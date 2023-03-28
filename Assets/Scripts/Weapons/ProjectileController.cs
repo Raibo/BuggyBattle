@@ -5,15 +5,21 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Weapons
 {
     public class ProjectileController : MonoBehaviour
     {
+        public GameObject HitEffectPrefab;
         public Poolable Poolable;
         public float Speed;
         public float MaximumLifetime;
 
         private Transform _transform;
         private float _lifetime;
+        private Pool _HitEffectPool;
 
-        private void Awake() =>
+
+        private void Awake()
+        {
             _transform = transform;
+            _HitEffectPool = PoolsCarrier.Instance.GetPoolForPrefab(HitEffectPrefab);
+        }
 
 
         private void OnEnable() =>
@@ -32,13 +38,13 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Weapons
 
         void OnCollisionEnter(Collision collision)
         {
-            print("Hit");
-        }
+            var effect = _HitEffectPool.Rent().GameObject;
+            var contact = collision.GetContact(0);
 
+            effect.transform.SetPositionAndRotation(contact.point, Quaternion.FromToRotation(Vector3.forward, contact.normal));
+            effect.SetActive(true);
 
-        void OnTriggerEnter(Collider other)
-        {
-            print("Hit");
+            Poolable.Return();
         }
 
 

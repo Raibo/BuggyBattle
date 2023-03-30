@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: -377260953534698096}
   - component: {fileID: -7572243675980216828}
   - component: {fileID: 267207579802288663}
-  - component: {fileID: 8470304339026194193}
+  - component: {fileID: 2522078158510863491}
   m_Layer: 8
-  m_Name: CannonShell
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7390900992670022566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 073a7fa8583d4ad4bbc7d19bb22ad0c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,8 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitEffectPrefab: {fileID: 7341600796548323317, guid: 59a4fc112401be44d8083e2e2764b7f8, type: 3}
   Poolable: {fileID: 267207579802288663}
-  Speed: 300
-  MaximumLifetime: 5
+  Speed: 450
+  MaximumLifetime: 3
 --- !u!114 &267207579802288663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pool: {fileID: 0}
---- !u!136 &8470304339026194193
+--- !u!136 &2522078158510863491
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,7 +142,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.65
+  m_Radius: 1.01
   m_Height: 1.5
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}

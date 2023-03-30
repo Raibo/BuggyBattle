@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 29468567}
   - component: {fileID: 29468572}
   - component: {fileID: 29468573}
+  - component: {fileID: 29468574}
   m_Layer: 7
   m_Name: Tank
   m_TagString: Untagged
@@ -343,6 +344,23 @@ MonoBehaviour:
   FirePoint: {fileID: 942203979}
   WeaponIndex: 1
   RateOfFire: 1
+  IsFiring: 0
+--- !u!114 &29468574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29468560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe91116b2f9e2b4daf7167a58474fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectilePrefab: {fileID: 7390900992670022566, guid: c635c9e75b95dfd439809f5287864297, type: 3}
+  FirePoint: {fileID: 942203979}
+  WeaponIndex: 2
+  RateOfFire: 3
   IsFiring: 0
 --- !u!1 &35849418
 GameObject:
@@ -1298,7 +1316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942203978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.33}
+  m_LocalPosition: {x: 0, y: 0, z: 3.091}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

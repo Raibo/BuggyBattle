@@ -11,6 +11,7 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Weapons
         public float MaximumLifetime;
 
         private Transform _transform;
+        private Rigidbody _rigidbody;
         private float _lifetime;
         private Pool _HitEffectPool;
 
@@ -19,16 +20,19 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Weapons
         {
             _transform = transform;
             _HitEffectPool = PoolsCarrier.Instance.GetPoolForPrefab(HitEffectPrefab);
+            _rigidbody = GetComponent<Rigidbody>();
         }
 
 
-        private void OnEnable() =>
+        private void OnEnable()
+        {
             _lifetime = 0f;
+            _rigidbody.velocity = transform.TransformDirection(new Vector3(0f, 0f, Speed));
+        }
 
 
         private void FixedUpdate()
         {
-            _transform.position += Speed * Time.deltaTime * _transform.forward;
             _lifetime += Time.deltaTime;
 
             if (_lifetime > MaximumLifetime)

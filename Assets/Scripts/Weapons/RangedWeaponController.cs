@@ -4,11 +4,13 @@ using UnityEngine;
 
 namespace Hudossay.BuggyBattle.Assets.Scripts.Units
 {
-    public class WeaponController : MonoBehaviour
+    public class RangedWeaponController : MonoBehaviour
     {
         public GameObject ProjectilePrefab;
         public GameObject FlashPrefab;
         public Transform FirePoint;
+        public AudioSource AudioSource;
+        public AudioClip ShotSound;
         public int WeaponIndex;
         public float RateOfFire;
         public bool IsFiring;
@@ -21,23 +23,23 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
 
         private void OnEnable()
         {
-            _reloadTime = 1f/RateOfFire;
+            _reloadTime = 1f / RateOfFire;
             _projectilePool = PoolsCarrier.Instance.GetPoolForPrefab(ProjectilePrefab);
             _flashPool = PoolsCarrier.Instance.GetPoolForPrefab(FlashPrefab);
+
+            _sinceReload = _reloadTime;
+
+            if (AudioSource != null)
+                AudioSource.clip = ShotSound;
         }
 
 
-        private void Update()
+        private void FixedUpdate()
         {
             _sinceReload += Time.deltaTime;
 
-            if (!IsFiring)
-                return;
-
-            if (_sinceReload < _reloadTime)
-                return;
-
-            Fire();
+            if (IsFiring && _sinceReload >= _reloadTime)
+                Fire();
         }
 
 
@@ -67,6 +69,8 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
 
             RentFromPool(_flashPool);
             RentFromPool(_projectilePool);
+
+            PlayShotSound();
         }
 
 
@@ -75,6 +79,15 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
             var obj = pool.Rent().GameObject;
             obj.transform.SetPositionAndRotation(FirePoint.position, FirePoint.rotation);
             obj.SetActive(true);
+        }
+
+
+        private void PlayShotSound()
+        {
+            if (AudioSource == null || ShotSound == null)
+                return;
+
+            AudioSource.Play();
         }
     }
 }

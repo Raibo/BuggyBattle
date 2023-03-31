@@ -1,4 +1,5 @@
 ﻿using Hudossay.AttributeEvents.Assets.Runtime.Attributes;
+using Hudossay.BuggyBattle.Assets.Scripts.Unils;
 using UnityEngine;
 
 namespace Hudossay.BuggyBattle.Assets.Scripts.Units
@@ -25,23 +26,29 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
         [ResponseLocal(UnitControlEvents.NewAimPoint)]
         public void OnNewAimPoint(Vector3 aimPoint)
         {
-            Rotate(Turret, TurretReference, aimPoint, Vector3.up);
-            Rotate(WeaponMount, WeaponMountReference, aimPoint, Vector3.right);
+            var turretRotation = Rotate(Turret, TurretReference, aimPoint, Vector3.up);
+            var mountAimPoint = VectorUtils.RotateAround(aimPoint, TurretReference.position, turretRotation);
+            Rotate(WeaponMount, WeaponMountReference, mountAimPoint, Vector3.right);
+
         }
 
 
-        private void Rotate(Transform rotated, Transform reference, Vector3 aimPoint, Vector3 rotationPlane)
+        private Quaternion Rotate(Transform rotated, Transform reference, Vector3 aimPoint, Vector3 rotationPlane)
         {
             var localAimPoint = reference.InverseTransformPoint(aimPoint);
-            localAimPoint = Vector3.ProjectOnPlane(localAimPoint, rotationPlane);
+            var localAimPointProjected = Vector3.ProjectOnPlane(localAimPoint, rotationPlane);
 
-            var endRotation = Quaternion.LookRotation(localAimPoint);
+            var endRotation = Quaternion.LookRotation(localAimPointProjected);
             var limitedRotation = Quaternion.RotateTowards(rotated.localRotation, endRotation, TurretSpeed * Time.deltaTime);
+
+            var aimRotation = rotated.localRotation * Quaternion.Inverse(endRotation);
+
             rotated.localRotation = limitedRotation;
+            return aimRotation;
         }
 
 
         private void Reset() =>
-            TurretSpeed = 10f;
+            TurretSpeed = 60f;
     }
 }

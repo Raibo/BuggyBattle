@@ -32,7 +32,6 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Weapons
             _rigidbody.velocity = _transform.TransformDirection(new Vector3(0f, 0f, Speed));
             _rigidbody.angularVelocity = Vector3.zero;
             _trail?.Clear();
-            //_trail?.AddPosition(_transform.position);
         }
 
 

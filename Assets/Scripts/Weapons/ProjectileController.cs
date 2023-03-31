@@ -12,6 +12,7 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Weapons
 
         private Transform _transform;
         private Rigidbody _rigidbody;
+        private TrailRenderer _trail;
         private float _lifetime;
         private Pool _HitEffectPool;
 
@@ -21,13 +22,17 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Weapons
             _transform = transform;
             _HitEffectPool = PoolsCarrier.Instance.GetPoolForPrefab(HitEffectPrefab);
             _rigidbody = GetComponent<Rigidbody>();
+            TryGetComponent(out _trail);
         }
 
 
         private void OnEnable()
         {
             _lifetime = 0f;
-            _rigidbody.velocity = transform.TransformDirection(new Vector3(0f, 0f, Speed));
+            _rigidbody.velocity = _transform.TransformDirection(new Vector3(0f, 0f, Speed));
+            _rigidbody.angularVelocity = Vector3.zero;
+            _trail?.Clear();
+            //_trail?.AddPosition(_transform.position);
         }
 
 
@@ -42,9 +47,9 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Weapons
 
         void OnCollisionEnter(Collision collision)
         {
-            var effect = _HitEffectPool.Rent().GameObject;
             var contact = collision.GetContact(0);
 
+            var effect = _HitEffectPool.Rent().GameObject;
             effect.transform.SetPositionAndRotation(contact.point, Quaternion.FromToRotation(Vector3.forward, contact.normal));
             effect.SetActive(true);
 

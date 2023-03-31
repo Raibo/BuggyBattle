@@ -7,12 +7,14 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
     public class WeaponController : MonoBehaviour
     {
         public GameObject ProjectilePrefab;
+        public GameObject FlashPrefab;
         public Transform FirePoint;
         public int WeaponIndex;
         public float RateOfFire;
         public bool IsFiring;
 
         private Pool _projectilePool;
+        private Pool _flashPool;
         private float _reloadTime;
         private float _sinceReload;
 
@@ -21,10 +23,11 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
         {
             _reloadTime = 1f/RateOfFire;
             _projectilePool = PoolsCarrier.Instance.GetPoolForPrefab(ProjectilePrefab);
+            _flashPool = PoolsCarrier.Instance.GetPoolForPrefab(FlashPrefab);
         }
 
 
-        private void FixedUpdate()
+        private void Update()
         {
             _sinceReload += Time.deltaTime;
 
@@ -61,14 +64,17 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
         private void Fire()
         {
             _sinceReload = 0f;
-            var projectile = _projectilePool.Rent().GameObject;
-            projectile.transform.SetPositionAndRotation(FirePoint.position, FirePoint.rotation);
 
-            var rigidBody = projectile.GetComponent<Rigidbody>();
-            rigidBody.velocity = Vector3.zero;
-            rigidBody.angularVelocity = Vector3.zero;
+            RentFromPool(_flashPool);
+            RentFromPool(_projectilePool);
+        }
 
-            projectile.SetActive(true);
+
+        private void RentFromPool(Pool pool)
+        {
+            var obj = pool.Rent().GameObject;
+            obj.transform.SetPositionAndRotation(FirePoint.position, FirePoint.rotation);
+            obj.SetActive(true);
         }
     }
 }

@@ -189,7 +189,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 82a0a82e34b2dea45b565f4daef06cc6, type: 2}
+  - {fileID: 2100000, guid: b0f69f5440f13b845a00bb0dff681bbc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -656,6 +656,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 81ad82b075cb7ad4a8f92dc1eef9cd33, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0f69f5440f13b845a00bb0dff681bbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 81ad82b075cb7ad4a8f92dc1eef9cd33, type: 3}
       propertyPath: m_Name
       value: CannonMount
@@ -724,7 +728,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 88fd7d7f229a3004f837cc3c8c7a49ee, type: 2}
+  - {fileID: 2100000, guid: 06d2d82c741d6b34692010a75df9b1fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1034,6 +1038,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4763b3e3927a589429c283673a97f79b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0f69f5440f13b845a00bb0dff681bbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 4763b3e3927a589429c283673a97f79b, type: 3}
       propertyPath: m_Name
       value: GunBarrel
@@ -1095,6 +1103,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 81ad82b075cb7ad4a8f92dc1eef9cd33, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0f69f5440f13b845a00bb0dff681bbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 81ad82b075cb7ad4a8f92dc1eef9cd33, type: 3}
       propertyPath: m_Name
       value: GunMount
@@ -2264,6 +2276,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a497741e4645026458c11187f61eb38c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0f69f5440f13b845a00bb0dff681bbc, type: 2}
     - target: {fileID: 919132149155446097, guid: a497741e4645026458c11187f61eb38c, type: 3}
       propertyPath: m_Name
       value: GunTurret
@@ -2426,6 +2442,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4763b3e3927a589429c283673a97f79b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0f69f5440f13b845a00bb0dff681bbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 4763b3e3927a589429c283673a97f79b, type: 3}
       propertyPath: m_Name
       value: CannonBarrel
@@ -2533,6 +2553,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a497741e4645026458c11187f61eb38c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0f69f5440f13b845a00bb0dff681bbc, type: 2}
     - target: {fileID: 919132149155446097, guid: a497741e4645026458c11187f61eb38c, type: 3}
       propertyPath: m_Name
       value: Turret

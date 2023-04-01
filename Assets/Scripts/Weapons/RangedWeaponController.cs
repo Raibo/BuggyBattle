@@ -6,19 +6,20 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
 {
     public class RangedWeaponController : MonoBehaviour
     {
+#if UNITY_EDITOR
+        public string WeaponName;
+#endif
         public GameObject ProjectilePrefab;
         public GameObject FlashPrefab;
         public Transform FirePoint;
-        public AudioSource AudioSource;
-        public AudioClip ShotSound;
         public int WeaponIndex;
         public float RateOfFire;
-        public bool IsFiring;
 
         private Pool _projectilePool;
         private Pool _flashPool;
         private float _reloadTime;
         private float _sinceReload;
+        private bool _isFiring;
 
 
         private void OnEnable()
@@ -28,9 +29,6 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
             _flashPool = PoolsCarrier.Instance.GetPoolForPrefab(FlashPrefab);
 
             _sinceReload = _reloadTime;
-
-            if (AudioSource != null)
-                AudioSource.clip = ShotSound;
         }
 
 
@@ -38,7 +36,7 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
         {
             _sinceReload += Time.deltaTime;
 
-            if (IsFiring && _sinceReload >= _reloadTime)
+            if (_isFiring && _sinceReload >= _reloadTime)
                 Fire();
         }
 
@@ -49,7 +47,7 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
             if (index != WeaponIndex)
                 return;
 
-            IsFiring = true;
+            _isFiring = true;
         }
 
 
@@ -59,7 +57,7 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
             if (index != WeaponIndex)
                 return;
 
-            IsFiring = false;
+            _isFiring = false;
         }
 
 
@@ -69,8 +67,6 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
 
             RentFromPool(_flashPool);
             RentFromPool(_projectilePool);
-
-            PlayShotSound();
         }
 
 
@@ -79,15 +75,6 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
             var obj = pool.Rent().GameObject;
             obj.transform.SetPositionAndRotation(FirePoint.position, FirePoint.rotation);
             obj.SetActive(true);
-        }
-
-
-        private void PlayShotSound()
-        {
-            if (AudioSource == null || ShotSound == null)
-                return;
-
-            AudioSource.Play();
         }
     }
 }

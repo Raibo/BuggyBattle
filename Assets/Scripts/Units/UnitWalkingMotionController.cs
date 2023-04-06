@@ -1,5 +1,5 @@
-﻿using Cinemachine.Utility;
-using Hudossay.AttributeEvents.Assets.Runtime.Attributes;
+﻿using Hudossay.AttributeEvents.Assets.Runtime.Attributes;
+using Hudossay.BuggyBattle.Assets.Scripts.Utils;
 using UnityEngine;
 
 namespace Hudossay.BuggyBattle.Assets.Scripts.Units
@@ -55,13 +55,10 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
 
         private void Rotate()
         {
-            var localAim = _bodyTransform.InverseTransformPoint(_aimVector);
-            var horizontalAim = localAim.ProjectOntoPlane(Vector3.up);
-
-            var endRotation = Quaternion.LookRotation(horizontalAim);
+            var endRotation = RotationUtils.RotationToPointByAxis(_bodyTransform, _aimVector, Vector3.up);
             var limitedRotation = Quaternion.RotateTowards(_bodyTransform.localRotation, endRotation, MaxRotationSpeed * Time.deltaTime);
 
-            _bodyTransform.localRotation = endRotation * _bodyTransform.localRotation;
+            _bodyTransform.localRotation = limitedRotation;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Hudossay.BuggyBattle.Assets.Scripts.Unils
+namespace Hudossay.BuggyBattle.Assets.Scripts.Utils
 {
     public static class VectorUtils
     {

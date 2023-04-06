@@ -1,5 +1,5 @@
 ﻿using Hudossay.AttributeEvents.Assets.Runtime.Attributes;
-using Hudossay.BuggyBattle.Assets.Scripts.Unils;
+using Hudossay.BuggyBattle.Assets.Scripts.Utils;
 using UnityEngine;
 
 namespace Hudossay.BuggyBattle.Assets.Scripts.Units
@@ -8,42 +8,31 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Units
     {
         public float TurretSpeed;
 
-        public Transform TurretReference;
         public Transform Turret;
-        public Transform WeaponMountReference;
         public Transform WeaponMount;
-
-
-        private void OnEnable()
-        {
-            TurretReference.localPosition = Turret.localPosition;
-            TurretReference.rotation = Quaternion.identity;
-            WeaponMountReference.localPosition = WeaponMount.localPosition;
-            WeaponMountReference.rotation = Quaternion.identity;
-        }
 
 
         [ResponseLocal(UnitControlEvents.NewAimPoint)]
         public void OnNewAimPoint(Vector3 aimPoint)
         {
-            var turretRotation = Rotate(Turret, TurretReference, aimPoint, Vector3.up);
-            var mountAimPoint = VectorUtils.RotateAround(aimPoint, TurretReference.position, turretRotation);
-            Rotate(WeaponMount, WeaponMountReference, mountAimPoint, Vector3.right);
-
+            var turretRotation = Rotate(Turret, aimPoint, Vector3.up);
+            var mountAimPoint = VectorUtils.RotateAround(aimPoint, Turret.position, turretRotation);
+            Rotate(WeaponMount, mountAimPoint, Vector3.right);
         }
 
 
-        private Quaternion Rotate(Transform rotated, Transform reference, Vector3 aimPoint, Vector3 rotationPlane)
+        private Quaternion Rotate(Transform rotated, Vector3 aimPoint, Vector3 rotationPlane)
         {
-            var localAimPoint = reference.InverseTransformPoint(aimPoint);
+            var localAimPoint = rotated.InverseTransformPoint(aimPoint);
             var localAimPointProjected = Vector3.ProjectOnPlane(localAimPoint, rotationPlane);
 
-            var endRotation = Quaternion.LookRotation(localAimPointProjected);
-            var limitedRotation = Quaternion.RotateTowards(rotated.localRotation, endRotation, TurretSpeed * Time.deltaTime);
+            var adjustingRotation = Quaternion.FromToRotation(Vector3.forward, localAimPointProjected);
+            var endRotation = rotated.localRotation * adjustingRotation;
+            var limitedEndRotation = Quaternion.RotateTowards(rotated.localRotation, endRotation, TurretSpeed * Time.deltaTime);
 
-            var aimRotation = rotated.localRotation * Quaternion.Inverse(endRotation);
+            var aimRotation = Quaternion.Inverse(adjustingRotation);
 
-            rotated.localRotation = limitedRotation;
+            rotated.localRotation = limitedEndRotation;
             return aimRotation;
         }
 

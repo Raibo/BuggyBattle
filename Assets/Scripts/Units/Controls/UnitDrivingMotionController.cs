@@ -1,7 +1,7 @@
 ﻿using Hudossay.AttributeEvents.Assets.Runtime.Attributes;
 using UnityEngine;
 
-namespace Hudossay.BuggyBattle.Assets.Scripts.Units
+namespace Hudossay.BuggyBattle.Assets.Scripts.Units.Controls
 {
     public class UnitDrivingMotionController : MonoBehaviour
     {

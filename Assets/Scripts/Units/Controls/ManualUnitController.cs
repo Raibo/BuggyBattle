@@ -5,7 +5,7 @@ using Hudossay.BuggyBattle.Assets.Scripts.Input;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Hudossay.BuggyBattle.Assets.Scripts.Units
+namespace Hudossay.BuggyBattle.Assets.Scripts.Units.Controls
 {
     public class ManualUnitController : MonoBehaviour
     {

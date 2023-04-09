@@ -1,4 +1,4 @@
-﻿namespace Hudossay.BuggyBattle.Assets.Scripts.Units
+﻿namespace Hudossay.BuggyBattle.Assets.Scripts.Units.Controls
 {
     public enum UnitControlEvents
     {

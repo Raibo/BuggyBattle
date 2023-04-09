@@ -2,7 +2,7 @@
 using Hudossay.BuggyBattle.Assets.Scripts.Utils;
 using UnityEngine;
 
-namespace Hudossay.BuggyBattle.Assets.Scripts.Units
+namespace Hudossay.BuggyBattle.Assets.Scripts.Units.Controls
 {
     public class UnitWalkingMotionController : MonoBehaviour
     {

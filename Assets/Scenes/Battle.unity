@@ -319,7 +319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9aa4348290784b2468144a97eb15d8d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4424319739ebd7444a90710948426013, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1752,10 +1752,6 @@ PrefabInstance:
     - target: {fileID: 4532137868660539736, guid: 0ed88bf5de859674680512ff1e0fb302, type: 3}
       propertyPath: MaxRotationAcceleration
       value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 4532137868660539739, guid: 0ed88bf5de859674680512ff1e0fb302, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4532137868660539739, guid: 0ed88bf5de859674680512ff1e0fb302, type: 3}
       propertyPath: PlayerCamera

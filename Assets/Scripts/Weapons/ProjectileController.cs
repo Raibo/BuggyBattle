@@ -1,4 +1,5 @@
 ﻿using Hudossay.BuggyBattle.Assets.Scripts.Pooling;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Hudossay.BuggyBattle.Assets.Scripts.Weapons
@@ -9,6 +10,8 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Weapons
         public Poolable Poolable;
         public float Speed;
         public float MaximumLifetime;
+
+        public List<HitFactorBase> HitFactors;
 
         private Transform _transform;
         private Rigidbody _rigidbody;
@@ -51,6 +54,9 @@ namespace Hudossay.BuggyBattle.Assets.Scripts.Weapons
             var effect = _HitEffectPool.Rent().GameObject;
             effect.transform.SetPositionAndRotation(contact.point, Quaternion.FromToRotation(Vector3.forward, contact.normal));
             effect.SetActive(true);
+
+            foreach (var hitFactor in HitFactors)
+                hitFactor.PerformHit(collision);
 
             Poolable.Return();
         }

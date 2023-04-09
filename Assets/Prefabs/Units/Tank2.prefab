@@ -194,6 +194,8 @@ GameObject:
   - component: {fileID: 2310343809300554940}
   - component: {fileID: 2310343809300554941}
   - component: {fileID: 2310343809300554938}
+  - component: {fileID: 148372098627215805}
+  - component: {fileID: 2345525431585249190}
   - component: {fileID: 2310343809300554937}
   m_Layer: 0
   m_Name: Tank2
@@ -351,6 +353,35 @@ MonoBehaviour:
   PlayerCamera: {fileID: 0}
   MaxRaycastDistance: 100
   Listeners: []
+--- !u!114 &148372098627215805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3228681421617718658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c1bfa21231aa134fbd97405b86b287c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maximumHitpoints: 1000
+  _currentHitpoints: 1000
+--- !u!114 &2345525431585249190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3228681421617718658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a6589430937c7b4f964d3750296fd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maximumEnergy: 100
+  _currentEnergy: 100
+  _recoveryRate: 10
 --- !u!114 &2310343809300554937
 MonoBehaviour:
   m_ObjectHideFlags: 0

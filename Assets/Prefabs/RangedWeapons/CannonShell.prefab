@@ -119,6 +119,9 @@ MonoBehaviour:
   Poolable: {fileID: 267207579802288663}
   Speed: 300
   MaximumLifetime: 5
+  HitFactors:
+  - {fileID: 11400000, guid: 634fba535a61b0c40bc632e856d3dcc8, type: 2}
+  - {fileID: 11400000, guid: f74f2c13d90f9754e9263543cd9605ca, type: 2}
 --- !u!114 &267207579802288663
 MonoBehaviour:
   m_ObjectHideFlags: 0
